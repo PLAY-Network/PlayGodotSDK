@@ -23,6 +23,13 @@ struct G_AchievementData {
             g_target_appIds.push_back(g_source_appIds_item);
         }
         target["appIds"] = g_target_appIds;
+        godot::Array g_target_tags;
+        for (const auto& source_tags_item : source.tags) {
+            godot::String g_source_tags_item;
+            g_source_tags_item = godot::String(source_tags_item.c_str());
+            g_target_tags.push_back(g_source_tags_item);
+        }
+        target["tags"] = g_target_tags;
         target["requestName"] = godot::String(source.requestName.c_str());
         target["name"] = godot::String(source.name.c_str());
         target["description"] = godot::String(source.description.c_str());
@@ -67,6 +74,14 @@ struct G_AchievementData {
             godot::String g_g_target_appIds_item = g_target_appIds_item;
             cpp_source_appIds_item = std::string(g_g_target_appIds_item.utf8().get_data());
             target.appIds.push_back(cpp_source_appIds_item);
+        }
+        godot::Array g_target_tags = source["tags"];
+        for (int i = 0; i < g_target_tags.size(); ++i) {
+            godot::String g_target_tags_item = g_target_tags[i];
+            string cpp_source_tags_item;
+            godot::String g_g_target_tags_item = g_target_tags_item;
+            cpp_source_tags_item = std::string(g_g_target_tags_item.utf8().get_data());
+            target.tags.push_back(cpp_source_tags_item);
         }
         godot::String g_source_requestName = source["requestName"];
         target.requestName = std::string(g_source_requestName.utf8().get_data());

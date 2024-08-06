@@ -51,29 +51,32 @@ public:
     }
 #endif
     REG_GCLASS_METHODS_HEADER() {
-        BIND_GCLASS_METHOD_DEFVAL(G_VirtualItemsModule::addVirtualItemAsync, GCLASS_METHOD_SIGNATURE("addVirtualItemAsync", "virtualItem", "onSuccess", "onFail"), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
+        BIND_GCLASS_METHOD_DEFVAL(G_VirtualItemsModule::addVirtualItemAsync, GCLASS_METHOD_SIGNATURE("addVirtualItemAsync", "virtualItem", "cancellationToken", "onSuccess", "onFail"), DEFVAL(nullptr), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
         BIND_GCLASS_METHOD_DEFVAL(G_VirtualItemsModule::addFromCSVAsync, GCLASS_METHOD_SIGNATURE("addFromCSVAsync", "virtualItemName", "csvContent", "csvDelimiter", "cancellationToken", "onSuccess", "onFail"), DEFVAL(","), DEFVAL(nullptr), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
-        BIND_GCLASS_METHOD_DEFVAL(G_VirtualItemsModule::updateVirtualItemAsync, GCLASS_METHOD_SIGNATURE("updateVirtualItemAsync", "itemId", "virtualItem", "onSuccess", "onFail"), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
-        BIND_GCLASS_METHOD_DEFVAL(G_VirtualItemsModule::deleteVirtualItemAsync, GCLASS_METHOD_SIGNATURE("deleteVirtualItemAsync", "itemId", "onSuccess", "onFail"), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
-        BIND_GCLASS_METHOD_DEFVAL(G_VirtualItemsModule::getVirtualItemsAsync, GCLASS_METHOD_SIGNATURE("getVirtualItemsAsync", "onSuccess", "onFail"), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
-        BIND_GCLASS_METHOD_DEFVAL(G_VirtualItemsModule::getVirtualItemsAsync_Limit_StartAfter, GCLASS_METHOD_SIGNATURE("getVirtualItemsAsync_Limit_StartAfter", "limit", "startAfter", "onSuccess", "onFail"), DEFVAL(""), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
-        BIND_GCLASS_METHOD_DEFVAL(G_VirtualItemsModule::getVirtualItemsByIdsAsync, GCLASS_METHOD_SIGNATURE("getVirtualItemsByIdsAsync", "virtualItemsIds", "onSuccess", "onFail"), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
-        BIND_GCLASS_METHOD_DEFVAL(G_VirtualItemsModule::getByTagsAsync, GCLASS_METHOD_SIGNATURE("getByTagsAsync", "tags", "appId", "onSuccess", "onFail"), DEFVAL(""), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
-        BIND_GCLASS_METHOD_DEFVAL(G_VirtualItemsModule::getTagsAsync, GCLASS_METHOD_SIGNATURE("getTagsAsync", "virtualItemId", "onSuccess", "onFail"), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
-        BIND_GCLASS_METHOD_DEFVAL(G_VirtualItemsModule::setTagsAsync, GCLASS_METHOD_SIGNATURE("setTagsAsync", "virtualItemId", "tags", "appId", "onSuccess", "onFail"), DEFVAL(""), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
-        BIND_GCLASS_METHOD_DEFVAL(G_VirtualItemsModule::setNameAsync, GCLASS_METHOD_SIGNATURE("setNameAsync", "virtualItemId", "name", "onSuccess", "onFail"), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
-        BIND_GCLASS_METHOD_DEFVAL(G_VirtualItemsModule::setDescriptionAsync, GCLASS_METHOD_SIGNATURE("setDescriptionAsync", "virtualItemId", "description", "onSuccess", "onFail"), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
-        BIND_GCLASS_METHOD_DEFVAL(G_VirtualItemsModule::getPropertiesAsync, GCLASS_METHOD_SIGNATURE("getPropertiesAsync", "virtualItemId", "onSuccess", "onFail"), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
-        BIND_GCLASS_METHOD_DEFVAL(G_VirtualItemsModule::setPropertiesAsync, GCLASS_METHOD_SIGNATURE("setPropertiesAsync", "virtualItemId", "json", "onSuccess", "onFail"), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
+        BIND_GCLASS_METHOD_DEFVAL(G_VirtualItemsModule::updateVirtualItemAsync, GCLASS_METHOD_SIGNATURE("updateVirtualItemAsync", "itemId", "virtualItem", "cancellationToken", "onSuccess", "onFail"), DEFVAL(nullptr), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
+        BIND_GCLASS_METHOD_DEFVAL(G_VirtualItemsModule::deleteVirtualItemAsync, GCLASS_METHOD_SIGNATURE("deleteVirtualItemAsync", "itemId", "cancellationToken", "onSuccess", "onFail"), DEFVAL(nullptr), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
+        BIND_GCLASS_METHOD_DEFVAL(G_VirtualItemsModule::getVirtualItemsAsync_CancellationToken, GCLASS_METHOD_SIGNATURE("getVirtualItemsAsync_CancellationToken", "cancellationToken", "onSuccess", "onFail"), DEFVAL(nullptr), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
+        BIND_GCLASS_METHOD_DEFVAL(G_VirtualItemsModule::getVirtualItemsAsync_Limit_StartAfter_CancellationToken, GCLASS_METHOD_SIGNATURE("getVirtualItemsAsync_Limit_StartAfter_CancellationToken", "limit", "startAfter", "cancellationToken", "onSuccess", "onFail"), DEFVAL(""), DEFVAL(nullptr), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
+        BIND_GCLASS_METHOD_DEFVAL(G_VirtualItemsModule::getVirtualItemsByIdsAsync, GCLASS_METHOD_SIGNATURE("getVirtualItemsByIdsAsync", "virtualItemsIds", "cancellationToken", "onSuccess", "onFail"), DEFVAL(nullptr), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
+        BIND_GCLASS_METHOD_DEFVAL(G_VirtualItemsModule::getByTagsAsync, GCLASS_METHOD_SIGNATURE("getByTagsAsync", "tags", "cancellationToken", "onSuccess", "onFail"), DEFVAL(nullptr), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
+        BIND_GCLASS_METHOD_DEFVAL(G_VirtualItemsModule::getTagsAsync, GCLASS_METHOD_SIGNATURE("getTagsAsync", "virtualItemId", "cancellationToken", "onSuccess", "onFail"), DEFVAL(nullptr), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
+        BIND_GCLASS_METHOD_DEFVAL(G_VirtualItemsModule::setTagsAsync, GCLASS_METHOD_SIGNATURE("setTagsAsync", "virtualItemId", "tags", "cancellationToken", "onSuccess", "onFail"), DEFVAL(nullptr), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
+        BIND_GCLASS_METHOD_DEFVAL(G_VirtualItemsModule::setNameAsync, GCLASS_METHOD_SIGNATURE("setNameAsync", "virtualItemId", "name", "cancellationToken", "onSuccess", "onFail"), DEFVAL(nullptr), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
+        BIND_GCLASS_METHOD_DEFVAL(G_VirtualItemsModule::setDescriptionAsync, GCLASS_METHOD_SIGNATURE("setDescriptionAsync", "virtualItemId", "description", "cancellationToken", "onSuccess", "onFail"), DEFVAL(nullptr), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
+        BIND_GCLASS_METHOD_DEFVAL(G_VirtualItemsModule::getPropertiesAsync, GCLASS_METHOD_SIGNATURE("getPropertiesAsync", "virtualItemId", "cancellationToken", "onSuccess", "onFail"), DEFVAL(nullptr), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
+        BIND_GCLASS_METHOD_DEFVAL(G_VirtualItemsModule::setPropertiesAsync, GCLASS_METHOD_SIGNATURE("setPropertiesAsync", "virtualItemId", "json", "cancellationToken", "onSuccess", "onFail"), DEFVAL(nullptr), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
         BIND_GCLASS_METHOD_DEFVAL(G_VirtualItemsModule::uploadImageAsync, GCLASS_METHOD_SIGNATURE("uploadImageAsync", "virtualItemId", "thumbnailTextureBytes", "cancellationToken", "onSuccess", "onFail"), DEFVAL(nullptr), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
         BIND_GCLASS_METHOD_DEFVAL(G_VirtualItemsModule::downloadImageAsync, GCLASS_METHOD_SIGNATURE("downloadImageAsync", "virtualItemId", "size", "cancellationToken", "onSuccess", "onFail"), DEFVAL(nullptr), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
     }
     void addVirtualItemAsync(
         godot::Dictionary virtualItem,
+        godot::Object* cancellationToken,
         GCALLBACK onSuccess,
         GCALLBACK onFail) {
             RGN::Modules::VirtualItems::VirtualItem cpp_virtualItem;
+            RGN::CancellationToken cpp_cancellationToken;
             G_VirtualItem::ConvertToCoreModel(virtualItem, cpp_virtualItem);
+            G_CancellationToken::ConvertToCoreModel(cancellationToken, cpp_cancellationToken);
             RGN::Modules::VirtualItems::VirtualItemsModule::AddVirtualItemAsync(
                 [onSuccess](RGN::Modules::VirtualItems::VirtualItem response) {
                     godot::Array gArgs;
@@ -90,7 +93,8 @@ public:
                      gArgs.push_back(godot::String(message.c_str()));
                      EXECUTE_GCALLBACK_DEFVAL(onFail, gArgs);
                 },
-                cpp_virtualItem
+                cpp_virtualItem,
+                cpp_cancellationToken
             );
     }
     void addFromCSVAsync(
@@ -140,13 +144,16 @@ public:
     void updateVirtualItemAsync(
         godot::String itemId,
         godot::Dictionary virtualItem,
+        godot::Object* cancellationToken,
         GCALLBACK onSuccess,
         GCALLBACK onFail) {
             string cpp_itemId;
             RGN::Modules::VirtualItems::VirtualItem cpp_virtualItem;
+            RGN::CancellationToken cpp_cancellationToken;
             godot::String g_itemId = itemId;
             cpp_itemId = std::string(g_itemId.utf8().get_data());
             G_VirtualItem::ConvertToCoreModel(virtualItem, cpp_virtualItem);
+            G_CancellationToken::ConvertToCoreModel(cancellationToken, cpp_cancellationToken);
             RGN::Modules::VirtualItems::VirtualItemsModule::UpdateVirtualItemAsync(
                 [onSuccess](RGN::Modules::VirtualItems::VirtualItem response) {
                     godot::Array gArgs;
@@ -164,16 +171,20 @@ public:
                      EXECUTE_GCALLBACK_DEFVAL(onFail, gArgs);
                 },
                 cpp_itemId,
-                cpp_virtualItem
+                cpp_virtualItem,
+                cpp_cancellationToken
             );
     }
     void deleteVirtualItemAsync(
         godot::String itemId,
+        godot::Object* cancellationToken,
         GCALLBACK onSuccess,
         GCALLBACK onFail) {
             string cpp_itemId;
+            RGN::CancellationToken cpp_cancellationToken;
             godot::String g_itemId = itemId;
             cpp_itemId = std::string(g_itemId.utf8().get_data());
+            G_CancellationToken::ConvertToCoreModel(cancellationToken, cpp_cancellationToken);
             RGN::Modules::VirtualItems::VirtualItemsModule::DeleteVirtualItemAsync(
                 [onSuccess]() {
                     EXECUTE_GCALLBACK_DEFVAL(onSuccess, godot::Array());
@@ -184,12 +195,16 @@ public:
                      gArgs.push_back(godot::String(message.c_str()));
                      EXECUTE_GCALLBACK_DEFVAL(onFail, gArgs);
                 },
-                cpp_itemId
+                cpp_itemId,
+                cpp_cancellationToken
             );
     }
-    void getVirtualItemsAsync(
+    void getVirtualItemsAsync_CancellationToken(
+        godot::Object* cancellationToken,
         GCALLBACK onSuccess,
         GCALLBACK onFail) {
+            RGN::CancellationToken cpp_cancellationToken;
+            G_CancellationToken::ConvertToCoreModel(cancellationToken, cpp_cancellationToken);
             RGN::Modules::VirtualItems::VirtualItemsModule::GetVirtualItemsAsync(
                 [onSuccess](vector<RGN::Modules::VirtualItems::VirtualItem> response) {
                     godot::Array gArgs;
@@ -211,19 +226,24 @@ public:
                      gArgs.push_back(code);
                      gArgs.push_back(godot::String(message.c_str()));
                      EXECUTE_GCALLBACK_DEFVAL(onFail, gArgs);
-                }            );
+                },
+                cpp_cancellationToken
+            );
     }
-    void getVirtualItemsAsync_Limit_StartAfter(
+    void getVirtualItemsAsync_Limit_StartAfter_CancellationToken(
         int32_t limit,
         godot::String startAfter,
+        godot::Object* cancellationToken,
         GCALLBACK onSuccess,
         GCALLBACK onFail) {
             int32_t cpp_limit;
             string cpp_startAfter;
+            RGN::CancellationToken cpp_cancellationToken;
             int32_t g_limit = limit;
             cpp_limit = g_limit;
             godot::String g_startAfter = startAfter;
             cpp_startAfter = std::string(g_startAfter.utf8().get_data());
+            G_CancellationToken::ConvertToCoreModel(cancellationToken, cpp_cancellationToken);
             RGN::Modules::VirtualItems::VirtualItemsModule::GetVirtualItemsAsync(
                 [onSuccess](vector<RGN::Modules::VirtualItems::VirtualItem> response) {
                     godot::Array gArgs;
@@ -247,14 +267,17 @@ public:
                      EXECUTE_GCALLBACK_DEFVAL(onFail, gArgs);
                 },
                 cpp_limit,
-                cpp_startAfter
+                cpp_startAfter,
+                cpp_cancellationToken
             );
     }
     void getVirtualItemsByIdsAsync(
         godot::Array virtualItemsIds,
+        godot::Object* cancellationToken,
         GCALLBACK onSuccess,
         GCALLBACK onFail) {
             vector<string> cpp_virtualItemsIds;
+            RGN::CancellationToken cpp_cancellationToken;
             godot::Array g_cpp_virtualItemsIds = virtualItemsIds;
             for (int i = 0; i < g_cpp_virtualItemsIds.size(); ++i) {
                 godot::String g_cpp_virtualItemsIds_item = g_cpp_virtualItemsIds[i];
@@ -263,6 +286,7 @@ public:
                 cpp_virtualItemsIds_item = std::string(g_g_cpp_virtualItemsIds_item.utf8().get_data());
                 cpp_virtualItemsIds.push_back(cpp_virtualItemsIds_item);
             }
+            G_CancellationToken::ConvertToCoreModel(cancellationToken, cpp_cancellationToken);
             RGN::Modules::VirtualItems::VirtualItemsModule::GetVirtualItemsByIdsAsync(
                 [onSuccess](vector<RGN::Modules::VirtualItems::VirtualItem> response) {
                     godot::Array gArgs;
@@ -285,16 +309,17 @@ public:
                      gArgs.push_back(godot::String(message.c_str()));
                      EXECUTE_GCALLBACK_DEFVAL(onFail, gArgs);
                 },
-                cpp_virtualItemsIds
+                cpp_virtualItemsIds,
+                cpp_cancellationToken
             );
     }
     void getByTagsAsync(
         godot::Array tags,
-        godot::String appId,
+        godot::Object* cancellationToken,
         GCALLBACK onSuccess,
         GCALLBACK onFail) {
             vector<string> cpp_tags;
-            string cpp_appId;
+            RGN::CancellationToken cpp_cancellationToken;
             godot::Array g_cpp_tags = tags;
             for (int i = 0; i < g_cpp_tags.size(); ++i) {
                 godot::String g_cpp_tags_item = g_cpp_tags[i];
@@ -303,8 +328,7 @@ public:
                 cpp_tags_item = std::string(g_g_cpp_tags_item.utf8().get_data());
                 cpp_tags.push_back(cpp_tags_item);
             }
-            godot::String g_appId = appId;
-            cpp_appId = std::string(g_appId.utf8().get_data());
+            G_CancellationToken::ConvertToCoreModel(cancellationToken, cpp_cancellationToken);
             RGN::Modules::VirtualItems::VirtualItemsModule::GetByTagsAsync(
                 [onSuccess](vector<RGN::Modules::VirtualItems::VirtualItem> response) {
                     godot::Array gArgs;
@@ -328,16 +352,19 @@ public:
                      EXECUTE_GCALLBACK_DEFVAL(onFail, gArgs);
                 },
                 cpp_tags,
-                cpp_appId
+                cpp_cancellationToken
             );
     }
     void getTagsAsync(
         godot::String virtualItemId,
+        godot::Object* cancellationToken,
         GCALLBACK onSuccess,
         GCALLBACK onFail) {
             string cpp_virtualItemId;
+            RGN::CancellationToken cpp_cancellationToken;
             godot::String g_virtualItemId = virtualItemId;
             cpp_virtualItemId = std::string(g_virtualItemId.utf8().get_data());
+            G_CancellationToken::ConvertToCoreModel(cancellationToken, cpp_cancellationToken);
             RGN::Modules::VirtualItems::VirtualItemsModule::GetTagsAsync(
                 [onSuccess](vector<string> response) {
                     godot::Array gArgs;
@@ -358,18 +385,19 @@ public:
                      gArgs.push_back(godot::String(message.c_str()));
                      EXECUTE_GCALLBACK_DEFVAL(onFail, gArgs);
                 },
-                cpp_virtualItemId
+                cpp_virtualItemId,
+                cpp_cancellationToken
             );
     }
     void setTagsAsync(
         godot::String virtualItemId,
         godot::Array tags,
-        godot::String appId,
+        godot::Object* cancellationToken,
         GCALLBACK onSuccess,
         GCALLBACK onFail) {
             string cpp_virtualItemId;
             vector<string> cpp_tags;
-            string cpp_appId;
+            RGN::CancellationToken cpp_cancellationToken;
             godot::String g_virtualItemId = virtualItemId;
             cpp_virtualItemId = std::string(g_virtualItemId.utf8().get_data());
             godot::Array g_cpp_tags = tags;
@@ -380,8 +408,7 @@ public:
                 cpp_tags_item = std::string(g_g_cpp_tags_item.utf8().get_data());
                 cpp_tags.push_back(cpp_tags_item);
             }
-            godot::String g_appId = appId;
-            cpp_appId = std::string(g_appId.utf8().get_data());
+            G_CancellationToken::ConvertToCoreModel(cancellationToken, cpp_cancellationToken);
             RGN::Modules::VirtualItems::VirtualItemsModule::SetTagsAsync(
                 [onSuccess]() {
                     EXECUTE_GCALLBACK_DEFVAL(onSuccess, godot::Array());
@@ -394,20 +421,23 @@ public:
                 },
                 cpp_virtualItemId,
                 cpp_tags,
-                cpp_appId
+                cpp_cancellationToken
             );
     }
     void setNameAsync(
         godot::String virtualItemId,
         godot::String name,
+        godot::Object* cancellationToken,
         GCALLBACK onSuccess,
         GCALLBACK onFail) {
             string cpp_virtualItemId;
             string cpp_name;
+            RGN::CancellationToken cpp_cancellationToken;
             godot::String g_virtualItemId = virtualItemId;
             cpp_virtualItemId = std::string(g_virtualItemId.utf8().get_data());
             godot::String g_name = name;
             cpp_name = std::string(g_name.utf8().get_data());
+            G_CancellationToken::ConvertToCoreModel(cancellationToken, cpp_cancellationToken);
             RGN::Modules::VirtualItems::VirtualItemsModule::SetNameAsync(
                 [onSuccess]() {
                     EXECUTE_GCALLBACK_DEFVAL(onSuccess, godot::Array());
@@ -419,20 +449,24 @@ public:
                      EXECUTE_GCALLBACK_DEFVAL(onFail, gArgs);
                 },
                 cpp_virtualItemId,
-                cpp_name
+                cpp_name,
+                cpp_cancellationToken
             );
     }
     void setDescriptionAsync(
         godot::String virtualItemId,
         godot::String description,
+        godot::Object* cancellationToken,
         GCALLBACK onSuccess,
         GCALLBACK onFail) {
             string cpp_virtualItemId;
             string cpp_description;
+            RGN::CancellationToken cpp_cancellationToken;
             godot::String g_virtualItemId = virtualItemId;
             cpp_virtualItemId = std::string(g_virtualItemId.utf8().get_data());
             godot::String g_description = description;
             cpp_description = std::string(g_description.utf8().get_data());
+            G_CancellationToken::ConvertToCoreModel(cancellationToken, cpp_cancellationToken);
             RGN::Modules::VirtualItems::VirtualItemsModule::SetDescriptionAsync(
                 [onSuccess]() {
                     EXECUTE_GCALLBACK_DEFVAL(onSuccess, godot::Array());
@@ -444,16 +478,20 @@ public:
                      EXECUTE_GCALLBACK_DEFVAL(onFail, gArgs);
                 },
                 cpp_virtualItemId,
-                cpp_description
+                cpp_description,
+                cpp_cancellationToken
             );
     }
     void getPropertiesAsync(
         godot::String virtualItemId,
+        godot::Object* cancellationToken,
         GCALLBACK onSuccess,
         GCALLBACK onFail) {
             string cpp_virtualItemId;
+            RGN::CancellationToken cpp_cancellationToken;
             godot::String g_virtualItemId = virtualItemId;
             cpp_virtualItemId = std::string(g_virtualItemId.utf8().get_data());
+            G_CancellationToken::ConvertToCoreModel(cancellationToken, cpp_cancellationToken);
             RGN::Modules::VirtualItems::VirtualItemsModule::GetPropertiesAsync(
                 [onSuccess](string response) {
                     godot::Array gArgs;
@@ -468,20 +506,24 @@ public:
                      gArgs.push_back(godot::String(message.c_str()));
                      EXECUTE_GCALLBACK_DEFVAL(onFail, gArgs);
                 },
-                cpp_virtualItemId
+                cpp_virtualItemId,
+                cpp_cancellationToken
             );
     }
     void setPropertiesAsync(
         godot::String virtualItemId,
         godot::String json,
+        godot::Object* cancellationToken,
         GCALLBACK onSuccess,
         GCALLBACK onFail) {
             string cpp_virtualItemId;
             string cpp_json;
+            RGN::CancellationToken cpp_cancellationToken;
             godot::String g_virtualItemId = virtualItemId;
             cpp_virtualItemId = std::string(g_virtualItemId.utf8().get_data());
             godot::String g_json = json;
             cpp_json = std::string(g_json.utf8().get_data());
+            G_CancellationToken::ConvertToCoreModel(cancellationToken, cpp_cancellationToken);
             RGN::Modules::VirtualItems::VirtualItemsModule::SetPropertiesAsync(
                 [onSuccess](string response) {
                     godot::Array gArgs;
@@ -497,7 +539,8 @@ public:
                      EXECUTE_GCALLBACK_DEFVAL(onFail, gArgs);
                 },
                 cpp_virtualItemId,
-                cpp_json
+                cpp_json,
+                cpp_cancellationToken
             );
     }
     void uploadImageAsync(

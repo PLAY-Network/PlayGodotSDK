@@ -55,55 +55,34 @@ public:
     }
 #endif
     REG_GCLASS_METHODS_HEADER() {
-        BIND_GCLASS_METHOD_DEFVAL(G_UserProfileModule::getProfileAsync, GCLASS_METHOD_SIGNATURE("getProfileAsync", "onSuccess", "onFail"), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
-        BIND_GCLASS_METHOD_DEFVAL(G_UserProfileModule::getProfileAsync_UserId, GCLASS_METHOD_SIGNATURE("getProfileAsync_UserId", "userId", "onSuccess", "onFail"), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
-        BIND_GCLASS_METHOD_DEFVAL(G_UserProfileModule::getFullUserProfileAsync, GCLASS_METHOD_SIGNATURE("getFullUserProfileAsync", "onSuccess", "onFail"), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
-        BIND_GCLASS_METHOD_DEFVAL(G_UserProfileModule::getFullUserProfileAsync_UserId, GCLASS_METHOD_SIGNATURE("getFullUserProfileAsync_UserId", "userId", "onSuccess", "onFail"), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
-        BIND_GCLASS_METHOD_DEFVAL(G_UserProfileModule::searchUsersAsync, GCLASS_METHOD_SIGNATURE("searchUsersAsync", "nicknameQuery", "onSuccess", "onFail"), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
-        BIND_GCLASS_METHOD_DEFVAL(G_UserProfileModule::getUserCurrenciesAsync, GCLASS_METHOD_SIGNATURE("getUserCurrenciesAsync", "onSuccess", "onFail"), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
-        BIND_GCLASS_METHOD_DEFVAL(G_UserProfileModule::getUserIdByShortUIDAsync, GCLASS_METHOD_SIGNATURE("getUserIdByShortUIDAsync", "shortUID", "onSuccess", "onFail"), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
-        BIND_GCLASS_METHOD_DEFVAL(G_UserProfileModule::setDisplayNameAsync, GCLASS_METHOD_SIGNATURE("setDisplayNameAsync", "displayName", "onSuccess", "onFail"), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
-        BIND_GCLASS_METHOD_DEFVAL(G_UserProfileModule::setBioAsync, GCLASS_METHOD_SIGNATURE("setBioAsync", "bio", "onSuccess", "onFail"), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
-        BIND_GCLASS_METHOD_DEFVAL(G_UserProfileModule::setDisplayNameAndBioAsync, GCLASS_METHOD_SIGNATURE("setDisplayNameAndBioAsync", "displayName", "bio", "onSuccess", "onFail"), DEFVAL(""), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
+        BIND_GCLASS_METHOD_DEFVAL(G_UserProfileModule::getProfileAsync_CancellationToken, GCLASS_METHOD_SIGNATURE("getProfileAsync_CancellationToken", "cancellationToken", "onSuccess", "onFail"), DEFVAL(nullptr), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
+        BIND_GCLASS_METHOD_DEFVAL(G_UserProfileModule::getProfileAsync_UserId_CancellationToken, GCLASS_METHOD_SIGNATURE("getProfileAsync_UserId_CancellationToken", "userId", "cancellationToken", "onSuccess", "onFail"), DEFVAL(nullptr), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
+        BIND_GCLASS_METHOD_DEFVAL(G_UserProfileModule::getFullUserProfileAsync_CancellationToken, GCLASS_METHOD_SIGNATURE("getFullUserProfileAsync_CancellationToken", "cancellationToken", "onSuccess", "onFail"), DEFVAL(nullptr), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
+        BIND_GCLASS_METHOD_DEFVAL(G_UserProfileModule::getFullUserProfileAsync_UserId_CancellationToken, GCLASS_METHOD_SIGNATURE("getFullUserProfileAsync_UserId_CancellationToken", "userId", "cancellationToken", "onSuccess", "onFail"), DEFVAL(nullptr), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
+        BIND_GCLASS_METHOD_DEFVAL(G_UserProfileModule::searchUsersAsync, GCLASS_METHOD_SIGNATURE("searchUsersAsync", "nicknameQuery", "cancellationToken", "onSuccess", "onFail"), DEFVAL(nullptr), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
+        BIND_GCLASS_METHOD_DEFVAL(G_UserProfileModule::getUserCurrenciesAsync, GCLASS_METHOD_SIGNATURE("getUserCurrenciesAsync", "cancellationToken", "onSuccess", "onFail"), DEFVAL(nullptr), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
+        BIND_GCLASS_METHOD_DEFVAL(G_UserProfileModule::getUserIdByShortUIDAsync, GCLASS_METHOD_SIGNATURE("getUserIdByShortUIDAsync", "shortUID", "cancellationToken", "onSuccess", "onFail"), DEFVAL(nullptr), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
+        BIND_GCLASS_METHOD_DEFVAL(G_UserProfileModule::setDisplayNameAsync, GCLASS_METHOD_SIGNATURE("setDisplayNameAsync", "displayName", "cancellationToken", "onSuccess", "onFail"), DEFVAL(nullptr), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
+        BIND_GCLASS_METHOD_DEFVAL(G_UserProfileModule::setBioAsync, GCLASS_METHOD_SIGNATURE("setBioAsync", "bio", "cancellationToken", "onSuccess", "onFail"), DEFVAL(nullptr), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
+        BIND_GCLASS_METHOD_DEFVAL(G_UserProfileModule::setDisplayNameAndBioAsync, GCLASS_METHOD_SIGNATURE("setDisplayNameAndBioAsync", "displayName", "bio", "cancellationToken", "onSuccess", "onFail"), DEFVAL(""), DEFVAL(nullptr), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
         BIND_GCLASS_METHOD_DEFVAL(G_UserProfileModule::uploadAvatarImageAsync, GCLASS_METHOD_SIGNATURE("uploadAvatarImageAsync", "bytes", "cancellationToken", "onSuccess", "onFail"), DEFVAL(nullptr), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
         BIND_GCLASS_METHOD_DEFVAL(G_UserProfileModule::downloadAvatarImageAsync, GCLASS_METHOD_SIGNATURE("downloadAvatarImageAsync", "userId", "size", "cancellationToken", "onSuccess", "onFail"), DEFVAL(nullptr), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
-        BIND_GCLASS_METHOD_DEFVAL(G_UserProfileModule::changeAdminStatusByEmailAsync, GCLASS_METHOD_SIGNATURE("changeAdminStatusByEmailAsync", "email", "isAdmin", "accessLevel", "onSuccess", "onFail"), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
-        BIND_GCLASS_METHOD_DEFVAL(G_UserProfileModule::changeAdminStatusByUserIdAsync, GCLASS_METHOD_SIGNATURE("changeAdminStatusByUserIdAsync", "userId", "isAdmin", "accessLevel", "onSuccess", "onFail"), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
-        BIND_GCLASS_METHOD_DEFVAL(G_UserProfileModule::getUserCustomClaimsByUserIdAsync, GCLASS_METHOD_SIGNATURE("getUserCustomClaimsByUserIdAsync", "userId", "onSuccess", "onFail"), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
-        BIND_GCLASS_METHOD_DEFVAL(G_UserProfileModule::getUserCustomClaimsByEmailAsync, GCLASS_METHOD_SIGNATURE("getUserCustomClaimsByEmailAsync", "email", "onSuccess", "onFail"), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
+        BIND_GCLASS_METHOD_DEFVAL(G_UserProfileModule::changeAdminStatusByEmailAsync, GCLASS_METHOD_SIGNATURE("changeAdminStatusByEmailAsync", "email", "isAdmin", "accessLevel", "cancellationToken", "onSuccess", "onFail"), DEFVAL(nullptr), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
+        BIND_GCLASS_METHOD_DEFVAL(G_UserProfileModule::changeAdminStatusByUserIdAsync, GCLASS_METHOD_SIGNATURE("changeAdminStatusByUserIdAsync", "userId", "isAdmin", "accessLevel", "cancellationToken", "onSuccess", "onFail"), DEFVAL(nullptr), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
+        BIND_GCLASS_METHOD_DEFVAL(G_UserProfileModule::getUserCustomClaimsByUserIdAsync, GCLASS_METHOD_SIGNATURE("getUserCustomClaimsByUserIdAsync", "userId", "cancellationToken", "onSuccess", "onFail"), DEFVAL(nullptr), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
+        BIND_GCLASS_METHOD_DEFVAL(G_UserProfileModule::getUserCustomClaimsByEmailAsync, GCLASS_METHOD_SIGNATURE("getUserCustomClaimsByEmailAsync", "email", "cancellationToken", "onSuccess", "onFail"), DEFVAL(nullptr), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
         BIND_GCLASS_METHOD_DEFVAL(G_UserProfileModule::setInvisibleStatusAsync, GCLASS_METHOD_SIGNATURE("setInvisibleStatusAsync", "invisibleStatus", "onSuccess", "onFail"), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
         BIND_GCLASS_METHOD_DEFVAL(G_UserProfileModule::pingAsync, GCLASS_METHOD_SIGNATURE("pingAsync", "onSuccess", "onFail"), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
         BIND_GCLASS_METHOD_DEFVAL(G_UserProfileModule::suspendAsync, GCLASS_METHOD_SIGNATURE("suspendAsync", "onSuccess", "onFail"), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
-        BIND_GCLASS_METHOD_DEFVAL(G_UserProfileModule::getUserStateAsync, GCLASS_METHOD_SIGNATURE("getUserStateAsync", "userId", "onSuccess", "onFail"), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
-        BIND_GCLASS_METHOD_DEFVAL(G_UserProfileModule::deleteUser, GCLASS_METHOD_SIGNATURE("deleteUser", "onSuccess", "onFail"), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
+        BIND_GCLASS_METHOD_DEFVAL(G_UserProfileModule::getUserStateAsync, GCLASS_METHOD_SIGNATURE("getUserStateAsync", "userId", "cancellationToken", "onSuccess", "onFail"), DEFVAL(nullptr), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
+        BIND_GCLASS_METHOD_DEFVAL(G_UserProfileModule::deleteUser, GCLASS_METHOD_SIGNATURE("deleteUser", "cancellationToken", "onSuccess", "onFail"), DEFVAL(nullptr), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
     }
-    void getProfileAsync(
+    void getProfileAsync_CancellationToken(
+        godot::Object* cancellationToken,
         GCALLBACK onSuccess,
         GCALLBACK onFail) {
-            RGN::Modules::UserProfile::UserProfileModule::GetProfileAsync(
-                [onSuccess](RGN::Modules::UserProfile::UserData response) {
-                    godot::Array gArgs;
-                    godot::Dictionary gResponse;
-                    godot::Dictionary g_gResponse;
-                    G_UserData::ConvertToGodotModel(response, g_gResponse);
-                    gResponse = g_gResponse;
-                    gArgs.push_back(gResponse);
-                    EXECUTE_GCALLBACK_DEFVAL(onSuccess, gArgs);
-                },
-                [onFail](int code, std::string message) {
-                     godot::Array gArgs;
-                     gArgs.push_back(code);
-                     gArgs.push_back(godot::String(message.c_str()));
-                     EXECUTE_GCALLBACK_DEFVAL(onFail, gArgs);
-                }            );
-    }
-    void getProfileAsync_UserId(
-        godot::String userId,
-        GCALLBACK onSuccess,
-        GCALLBACK onFail) {
-            string cpp_userId;
-            godot::String g_userId = userId;
-            cpp_userId = std::string(g_userId.utf8().get_data());
+            RGN::CancellationToken cpp_cancellationToken;
+            G_CancellationToken::ConvertToCoreModel(cancellationToken, cpp_cancellationToken);
             RGN::Modules::UserProfile::UserProfileModule::GetProfileAsync(
                 [onSuccess](RGN::Modules::UserProfile::UserData response) {
                     godot::Array gArgs;
@@ -120,34 +99,45 @@ public:
                      gArgs.push_back(godot::String(message.c_str()));
                      EXECUTE_GCALLBACK_DEFVAL(onFail, gArgs);
                 },
-                cpp_userId
+                cpp_cancellationToken
             );
     }
-    void getFullUserProfileAsync(
-        GCALLBACK onSuccess,
-        GCALLBACK onFail) {
-            RGN::Modules::UserProfile::UserProfileModule::GetFullUserProfileAsync(
-                [onSuccess](string response) {
-                    godot::Array gArgs;
-                    godot::String gResponse;
-                    gResponse = godot::String(response.c_str());
-                    gArgs.push_back(gResponse);
-                    EXECUTE_GCALLBACK_DEFVAL(onSuccess, gArgs);
-                },
-                [onFail](int code, std::string message) {
-                     godot::Array gArgs;
-                     gArgs.push_back(code);
-                     gArgs.push_back(godot::String(message.c_str()));
-                     EXECUTE_GCALLBACK_DEFVAL(onFail, gArgs);
-                }            );
-    }
-    void getFullUserProfileAsync_UserId(
+    void getProfileAsync_UserId_CancellationToken(
         godot::String userId,
+        godot::Object* cancellationToken,
         GCALLBACK onSuccess,
         GCALLBACK onFail) {
             string cpp_userId;
+            RGN::CancellationToken cpp_cancellationToken;
             godot::String g_userId = userId;
             cpp_userId = std::string(g_userId.utf8().get_data());
+            G_CancellationToken::ConvertToCoreModel(cancellationToken, cpp_cancellationToken);
+            RGN::Modules::UserProfile::UserProfileModule::GetProfileAsync(
+                [onSuccess](RGN::Modules::UserProfile::UserData response) {
+                    godot::Array gArgs;
+                    godot::Dictionary gResponse;
+                    godot::Dictionary g_gResponse;
+                    G_UserData::ConvertToGodotModel(response, g_gResponse);
+                    gResponse = g_gResponse;
+                    gArgs.push_back(gResponse);
+                    EXECUTE_GCALLBACK_DEFVAL(onSuccess, gArgs);
+                },
+                [onFail](int code, std::string message) {
+                     godot::Array gArgs;
+                     gArgs.push_back(code);
+                     gArgs.push_back(godot::String(message.c_str()));
+                     EXECUTE_GCALLBACK_DEFVAL(onFail, gArgs);
+                },
+                cpp_userId,
+                cpp_cancellationToken
+            );
+    }
+    void getFullUserProfileAsync_CancellationToken(
+        godot::Object* cancellationToken,
+        GCALLBACK onSuccess,
+        GCALLBACK onFail) {
+            RGN::CancellationToken cpp_cancellationToken;
+            G_CancellationToken::ConvertToCoreModel(cancellationToken, cpp_cancellationToken);
             RGN::Modules::UserProfile::UserProfileModule::GetFullUserProfileAsync(
                 [onSuccess](string response) {
                     godot::Array gArgs;
@@ -162,16 +152,47 @@ public:
                      gArgs.push_back(godot::String(message.c_str()));
                      EXECUTE_GCALLBACK_DEFVAL(onFail, gArgs);
                 },
-                cpp_userId
+                cpp_cancellationToken
+            );
+    }
+    void getFullUserProfileAsync_UserId_CancellationToken(
+        godot::String userId,
+        godot::Object* cancellationToken,
+        GCALLBACK onSuccess,
+        GCALLBACK onFail) {
+            string cpp_userId;
+            RGN::CancellationToken cpp_cancellationToken;
+            godot::String g_userId = userId;
+            cpp_userId = std::string(g_userId.utf8().get_data());
+            G_CancellationToken::ConvertToCoreModel(cancellationToken, cpp_cancellationToken);
+            RGN::Modules::UserProfile::UserProfileModule::GetFullUserProfileAsync(
+                [onSuccess](string response) {
+                    godot::Array gArgs;
+                    godot::String gResponse;
+                    gResponse = godot::String(response.c_str());
+                    gArgs.push_back(gResponse);
+                    EXECUTE_GCALLBACK_DEFVAL(onSuccess, gArgs);
+                },
+                [onFail](int code, std::string message) {
+                     godot::Array gArgs;
+                     gArgs.push_back(code);
+                     gArgs.push_back(godot::String(message.c_str()));
+                     EXECUTE_GCALLBACK_DEFVAL(onFail, gArgs);
+                },
+                cpp_userId,
+                cpp_cancellationToken
             );
     }
     void searchUsersAsync(
         godot::String nicknameQuery,
+        godot::Object* cancellationToken,
         GCALLBACK onSuccess,
         GCALLBACK onFail) {
             string cpp_nicknameQuery;
+            RGN::CancellationToken cpp_cancellationToken;
             godot::String g_nicknameQuery = nicknameQuery;
             cpp_nicknameQuery = std::string(g_nicknameQuery.utf8().get_data());
+            G_CancellationToken::ConvertToCoreModel(cancellationToken, cpp_cancellationToken);
             RGN::Modules::UserProfile::UserProfileModule::SearchUsersAsync(
                 [onSuccess](vector<RGN::Modules::UserProfile::UserData> response) {
                     godot::Array gArgs;
@@ -194,12 +215,16 @@ public:
                      gArgs.push_back(godot::String(message.c_str()));
                      EXECUTE_GCALLBACK_DEFVAL(onFail, gArgs);
                 },
-                cpp_nicknameQuery
+                cpp_nicknameQuery,
+                cpp_cancellationToken
             );
     }
     void getUserCurrenciesAsync(
+        godot::Object* cancellationToken,
         GCALLBACK onSuccess,
         GCALLBACK onFail) {
+            RGN::CancellationToken cpp_cancellationToken;
+            G_CancellationToken::ConvertToCoreModel(cancellationToken, cpp_cancellationToken);
             RGN::Modules::UserProfile::UserProfileModule::GetUserCurrenciesAsync(
                 [onSuccess](vector<RGN::Modules::Currency::Currency> response) {
                     godot::Array gArgs;
@@ -221,15 +246,20 @@ public:
                      gArgs.push_back(code);
                      gArgs.push_back(godot::String(message.c_str()));
                      EXECUTE_GCALLBACK_DEFVAL(onFail, gArgs);
-                }            );
+                },
+                cpp_cancellationToken
+            );
     }
     void getUserIdByShortUIDAsync(
         godot::String shortUID,
+        godot::Object* cancellationToken,
         GCALLBACK onSuccess,
         GCALLBACK onFail) {
             string cpp_shortUID;
+            RGN::CancellationToken cpp_cancellationToken;
             godot::String g_shortUID = shortUID;
             cpp_shortUID = std::string(g_shortUID.utf8().get_data());
+            G_CancellationToken::ConvertToCoreModel(cancellationToken, cpp_cancellationToken);
             RGN::Modules::UserProfile::UserProfileModule::GetUserIdByShortUIDAsync(
                 [onSuccess](string response) {
                     godot::Array gArgs;
@@ -244,16 +274,20 @@ public:
                      gArgs.push_back(godot::String(message.c_str()));
                      EXECUTE_GCALLBACK_DEFVAL(onFail, gArgs);
                 },
-                cpp_shortUID
+                cpp_shortUID,
+                cpp_cancellationToken
             );
     }
     void setDisplayNameAsync(
         godot::String displayName,
+        godot::Object* cancellationToken,
         GCALLBACK onSuccess,
         GCALLBACK onFail) {
             string cpp_displayName;
+            RGN::CancellationToken cpp_cancellationToken;
             godot::String g_displayName = displayName;
             cpp_displayName = std::string(g_displayName.utf8().get_data());
+            G_CancellationToken::ConvertToCoreModel(cancellationToken, cpp_cancellationToken);
             RGN::Modules::UserProfile::UserProfileModule::SetDisplayNameAsync(
                 [onSuccess](string response) {
                     godot::Array gArgs;
@@ -268,16 +302,20 @@ public:
                      gArgs.push_back(godot::String(message.c_str()));
                      EXECUTE_GCALLBACK_DEFVAL(onFail, gArgs);
                 },
-                cpp_displayName
+                cpp_displayName,
+                cpp_cancellationToken
             );
     }
     void setBioAsync(
         godot::String bio,
+        godot::Object* cancellationToken,
         GCALLBACK onSuccess,
         GCALLBACK onFail) {
             string cpp_bio;
+            RGN::CancellationToken cpp_cancellationToken;
             godot::String g_bio = bio;
             cpp_bio = std::string(g_bio.utf8().get_data());
+            G_CancellationToken::ConvertToCoreModel(cancellationToken, cpp_cancellationToken);
             RGN::Modules::UserProfile::UserProfileModule::SetBioAsync(
                 [onSuccess](string response) {
                     godot::Array gArgs;
@@ -292,20 +330,24 @@ public:
                      gArgs.push_back(godot::String(message.c_str()));
                      EXECUTE_GCALLBACK_DEFVAL(onFail, gArgs);
                 },
-                cpp_bio
+                cpp_bio,
+                cpp_cancellationToken
             );
     }
     void setDisplayNameAndBioAsync(
         godot::String displayName,
         godot::String bio,
+        godot::Object* cancellationToken,
         GCALLBACK onSuccess,
         GCALLBACK onFail) {
             string cpp_displayName;
             string cpp_bio;
+            RGN::CancellationToken cpp_cancellationToken;
             godot::String g_displayName = displayName;
             cpp_displayName = std::string(g_displayName.utf8().get_data());
             godot::String g_bio = bio;
             cpp_bio = std::string(g_bio.utf8().get_data());
+            G_CancellationToken::ConvertToCoreModel(cancellationToken, cpp_cancellationToken);
             RGN::Modules::UserProfile::UserProfileModule::SetDisplayNameAndBioAsync(
                 [onSuccess](string response) {
                     godot::Array gArgs;
@@ -321,7 +363,8 @@ public:
                      EXECUTE_GCALLBACK_DEFVAL(onFail, gArgs);
                 },
                 cpp_displayName,
-                cpp_bio
+                cpp_bio,
+                cpp_cancellationToken
             );
     }
     void uploadAvatarImageAsync(
@@ -401,17 +444,20 @@ public:
         godot::String email,
         bool isAdmin,
         int32_t accessLevel,
+        godot::Object* cancellationToken,
         GCALLBACK onSuccess,
         GCALLBACK onFail) {
             string cpp_email;
             bool cpp_isAdmin;
             int32_t cpp_accessLevel;
+            RGN::CancellationToken cpp_cancellationToken;
             godot::String g_email = email;
             cpp_email = std::string(g_email.utf8().get_data());
             bool g_isAdmin = isAdmin;
             cpp_isAdmin = g_isAdmin;
             int32_t g_accessLevel = accessLevel;
             cpp_accessLevel = g_accessLevel;
+            G_CancellationToken::ConvertToCoreModel(cancellationToken, cpp_cancellationToken);
             RGN::Modules::UserProfile::UserProfileModule::ChangeAdminStatusByEmailAsync(
                 [onSuccess](RGN::Modules::UserProfile::UserCustomClaims response) {
                     godot::Array gArgs;
@@ -430,24 +476,28 @@ public:
                 },
                 cpp_email,
                 cpp_isAdmin,
-                cpp_accessLevel
+                cpp_accessLevel,
+                cpp_cancellationToken
             );
     }
     void changeAdminStatusByUserIdAsync(
         godot::String userId,
         bool isAdmin,
         int32_t accessLevel,
+        godot::Object* cancellationToken,
         GCALLBACK onSuccess,
         GCALLBACK onFail) {
             string cpp_userId;
             bool cpp_isAdmin;
             int32_t cpp_accessLevel;
+            RGN::CancellationToken cpp_cancellationToken;
             godot::String g_userId = userId;
             cpp_userId = std::string(g_userId.utf8().get_data());
             bool g_isAdmin = isAdmin;
             cpp_isAdmin = g_isAdmin;
             int32_t g_accessLevel = accessLevel;
             cpp_accessLevel = g_accessLevel;
+            G_CancellationToken::ConvertToCoreModel(cancellationToken, cpp_cancellationToken);
             RGN::Modules::UserProfile::UserProfileModule::ChangeAdminStatusByUserIdAsync(
                 [onSuccess](RGN::Modules::UserProfile::UserCustomClaims response) {
                     godot::Array gArgs;
@@ -466,16 +516,20 @@ public:
                 },
                 cpp_userId,
                 cpp_isAdmin,
-                cpp_accessLevel
+                cpp_accessLevel,
+                cpp_cancellationToken
             );
     }
     void getUserCustomClaimsByUserIdAsync(
         godot::String userId,
+        godot::Object* cancellationToken,
         GCALLBACK onSuccess,
         GCALLBACK onFail) {
             string cpp_userId;
+            RGN::CancellationToken cpp_cancellationToken;
             godot::String g_userId = userId;
             cpp_userId = std::string(g_userId.utf8().get_data());
+            G_CancellationToken::ConvertToCoreModel(cancellationToken, cpp_cancellationToken);
             RGN::Modules::UserProfile::UserProfileModule::GetUserCustomClaimsByUserIdAsync(
                 [onSuccess](RGN::Modules::UserProfile::UserCustomClaims response) {
                     godot::Array gArgs;
@@ -492,16 +546,20 @@ public:
                      gArgs.push_back(godot::String(message.c_str()));
                      EXECUTE_GCALLBACK_DEFVAL(onFail, gArgs);
                 },
-                cpp_userId
+                cpp_userId,
+                cpp_cancellationToken
             );
     }
     void getUserCustomClaimsByEmailAsync(
         godot::String email,
+        godot::Object* cancellationToken,
         GCALLBACK onSuccess,
         GCALLBACK onFail) {
             string cpp_email;
+            RGN::CancellationToken cpp_cancellationToken;
             godot::String g_email = email;
             cpp_email = std::string(g_email.utf8().get_data());
+            G_CancellationToken::ConvertToCoreModel(cancellationToken, cpp_cancellationToken);
             RGN::Modules::UserProfile::UserProfileModule::GetUserCustomClaimsByEmailAsync(
                 [onSuccess](RGN::Modules::UserProfile::UserCustomClaims response) {
                     godot::Array gArgs;
@@ -518,7 +576,8 @@ public:
                      gArgs.push_back(godot::String(message.c_str()));
                      EXECUTE_GCALLBACK_DEFVAL(onFail, gArgs);
                 },
-                cpp_email
+                cpp_email,
+                cpp_cancellationToken
             );
     }
     void setInvisibleStatusAsync(
@@ -571,11 +630,14 @@ public:
     }
     void getUserStateAsync(
         godot::String userId,
+        godot::Object* cancellationToken,
         GCALLBACK onSuccess,
         GCALLBACK onFail) {
             string cpp_userId;
+            RGN::CancellationToken cpp_cancellationToken;
             godot::String g_userId = userId;
             cpp_userId = std::string(g_userId.utf8().get_data());
+            G_CancellationToken::ConvertToCoreModel(cancellationToken, cpp_cancellationToken);
             RGN::Modules::UserProfile::UserProfileModule::GetUserStateAsync(
                 [onSuccess](RGN::Modules::UserProfile::GetUserStatusResponseData response) {
                     godot::Array gArgs;
@@ -592,12 +654,16 @@ public:
                      gArgs.push_back(godot::String(message.c_str()));
                      EXECUTE_GCALLBACK_DEFVAL(onFail, gArgs);
                 },
-                cpp_userId
+                cpp_userId,
+                cpp_cancellationToken
             );
     }
     void deleteUser(
+        godot::Object* cancellationToken,
         GCALLBACK onSuccess,
         GCALLBACK onFail) {
+            RGN::CancellationToken cpp_cancellationToken;
+            G_CancellationToken::ConvertToCoreModel(cancellationToken, cpp_cancellationToken);
             RGN::Modules::UserProfile::UserProfileModule::DeleteUser(
                 [onSuccess]() {
                     EXECUTE_GCALLBACK_DEFVAL(onSuccess, godot::Array());
@@ -607,6 +673,8 @@ public:
                      gArgs.push_back(code);
                      gArgs.push_back(godot::String(message.c_str()));
                      EXECUTE_GCALLBACK_DEFVAL(onFail, gArgs);
-                }            );
+                },
+                cpp_cancellationToken
+            );
     }
 };

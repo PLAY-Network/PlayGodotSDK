@@ -1,5 +1,7 @@
 #pragma once
 // This file is generated: please don't modify. Go to Unity code generator if you need changes.
+#include "../../../../Utility/G_CancellationToken.h"
+#include "../../../../../Utility/CancellationToken.h"
 #include "../../../../../Generated/RGN/Modules/Wallets/WalletsModule.h"
 #include "../../../../../Generated/RGN/Modules/Wallets/IsUserHasBlockchainRequirementResponseData.h"
 #include "G_IsUserHasBlockchainRequirementResponseData.h"
@@ -33,11 +35,14 @@ public:
     }
 #endif
     REG_GCLASS_METHODS_HEADER() {
-        BIND_GCLASS_METHOD_DEFVAL(G_WalletsModule::isUserHasBlockchainRequirementAsync, GCLASS_METHOD_SIGNATURE("isUserHasBlockchainRequirementAsync", "onSuccess", "onFail"), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
+        BIND_GCLASS_METHOD_DEFVAL(G_WalletsModule::isUserHasBlockchainRequirementAsync, GCLASS_METHOD_SIGNATURE("isUserHasBlockchainRequirementAsync", "cancellationToken", "onSuccess", "onFail"), DEFVAL(nullptr), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
     }
     void isUserHasBlockchainRequirementAsync(
+        godot::Object* cancellationToken,
         GCALLBACK onSuccess,
         GCALLBACK onFail) {
+            RGN::CancellationToken cpp_cancellationToken;
+            G_CancellationToken::ConvertToCoreModel(cancellationToken, cpp_cancellationToken);
             RGN::Modules::Wallets::WalletsModule::IsUserHasBlockchainRequirementAsync(
                 [onSuccess](bool response) {
                     godot::Array gArgs;
@@ -51,6 +56,8 @@ public:
                      gArgs.push_back(code);
                      gArgs.push_back(godot::String(message.c_str()));
                      EXECUTE_GCALLBACK_DEFVAL(onFail, gArgs);
-                }            );
+                },
+                cpp_cancellationToken
+            );
     }
 };
