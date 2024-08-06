@@ -1,5 +1,7 @@
 #pragma once
 // This file is generated: please don't modify. Go to Unity code generator if you need changes.
+#include "../../../../Utility/G_CancellationToken.h"
+#include "../../../../../Utility/CancellationToken.h"
 #include "../../../../../Generated/RGN/Modules/Currency/CurrencyModule.h"
 #include "../../../../../Generated/RGN/Modules/Currency/RGNCoinEconomy.h"
 #include "G_RGNCoinEconomy.h"
@@ -49,16 +51,19 @@ public:
     }
 #endif
     REG_GCLASS_METHODS_HEADER() {
-        BIND_GCLASS_METHOD_DEFVAL(G_CurrencyModule::getRGNCoinEconomyAsync, GCLASS_METHOD_SIGNATURE("getRGNCoinEconomyAsync", "onSuccess", "onFail"), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
-        BIND_GCLASS_METHOD_DEFVAL(G_CurrencyModule::purchaseRGNCoinAsync, GCLASS_METHOD_SIGNATURE("purchaseRGNCoinAsync", "iapUUID", "iapTransactionId", "iapReceipt", "onSuccess", "onFail"), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
-        BIND_GCLASS_METHOD_DEFVAL(G_CurrencyModule::getInAppPurchaseCurrencyDataAsync, GCLASS_METHOD_SIGNATURE("getInAppPurchaseCurrencyDataAsync", "onSuccess", "onFail"), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
-        BIND_GCLASS_METHOD_DEFVAL(G_CurrencyModule::purchaseCurrencyProductAsync, GCLASS_METHOD_SIGNATURE("purchaseCurrencyProductAsync", "productId", "onSuccess", "onFail"), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
-        BIND_GCLASS_METHOD_DEFVAL(G_CurrencyModule::addUserCurrenciesAsync, GCLASS_METHOD_SIGNATURE("addUserCurrenciesAsync", "currencies", "onSuccess", "onFail"), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
-        BIND_GCLASS_METHOD_DEFVAL(G_CurrencyModule::getUserCurrenciesAsync, GCLASS_METHOD_SIGNATURE("getUserCurrenciesAsync", "onSuccess", "onFail"), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
+        BIND_GCLASS_METHOD_DEFVAL(G_CurrencyModule::getRGNCoinEconomyAsync, GCLASS_METHOD_SIGNATURE("getRGNCoinEconomyAsync", "cancellationToken", "onSuccess", "onFail"), DEFVAL(nullptr), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
+        BIND_GCLASS_METHOD_DEFVAL(G_CurrencyModule::purchaseRGNCoinAsync, GCLASS_METHOD_SIGNATURE("purchaseRGNCoinAsync", "iapUUID", "iapTransactionId", "iapReceipt", "cancellationToken", "onSuccess", "onFail"), DEFVAL(nullptr), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
+        BIND_GCLASS_METHOD_DEFVAL(G_CurrencyModule::getInAppPurchaseCurrencyDataAsync, GCLASS_METHOD_SIGNATURE("getInAppPurchaseCurrencyDataAsync", "cancellationToken", "onSuccess", "onFail"), DEFVAL(nullptr), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
+        BIND_GCLASS_METHOD_DEFVAL(G_CurrencyModule::purchaseCurrencyProductAsync, GCLASS_METHOD_SIGNATURE("purchaseCurrencyProductAsync", "productId", "cancellationToken", "onSuccess", "onFail"), DEFVAL(nullptr), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
+        BIND_GCLASS_METHOD_DEFVAL(G_CurrencyModule::addUserCurrenciesAsync, GCLASS_METHOD_SIGNATURE("addUserCurrenciesAsync", "currencies", "cancellationToken", "onSuccess", "onFail"), DEFVAL(nullptr), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
+        BIND_GCLASS_METHOD_DEFVAL(G_CurrencyModule::getUserCurrenciesAsync, GCLASS_METHOD_SIGNATURE("getUserCurrenciesAsync", "cancellationToken", "onSuccess", "onFail"), DEFVAL(nullptr), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
     }
     void getRGNCoinEconomyAsync(
+        godot::Object* cancellationToken,
         GCALLBACK onSuccess,
         GCALLBACK onFail) {
+            RGN::CancellationToken cpp_cancellationToken;
+            G_CancellationToken::ConvertToCoreModel(cancellationToken, cpp_cancellationToken);
             RGN::Modules::Currency::CurrencyModule::GetRGNCoinEconomyAsync(
                 [onSuccess](RGN::Modules::Currency::RGNCoinEconomy response) {
                     godot::Array gArgs;
@@ -74,23 +79,28 @@ public:
                      gArgs.push_back(code);
                      gArgs.push_back(godot::String(message.c_str()));
                      EXECUTE_GCALLBACK_DEFVAL(onFail, gArgs);
-                }            );
+                },
+                cpp_cancellationToken
+            );
     }
     void purchaseRGNCoinAsync(
         godot::String iapUUID,
         godot::String iapTransactionId,
         godot::String iapReceipt,
+        godot::Object* cancellationToken,
         GCALLBACK onSuccess,
         GCALLBACK onFail) {
             string cpp_iapUUID;
             string cpp_iapTransactionId;
             string cpp_iapReceipt;
+            RGN::CancellationToken cpp_cancellationToken;
             godot::String g_iapUUID = iapUUID;
             cpp_iapUUID = std::string(g_iapUUID.utf8().get_data());
             godot::String g_iapTransactionId = iapTransactionId;
             cpp_iapTransactionId = std::string(g_iapTransactionId.utf8().get_data());
             godot::String g_iapReceipt = iapReceipt;
             cpp_iapReceipt = std::string(g_iapReceipt.utf8().get_data());
+            G_CancellationToken::ConvertToCoreModel(cancellationToken, cpp_cancellationToken);
             RGN::Modules::Currency::CurrencyModule::PurchaseRGNCoinAsync(
                 [onSuccess](vector<RGN::Modules::Currency::Currency> response) {
                     godot::Array gArgs;
@@ -115,12 +125,16 @@ public:
                 },
                 cpp_iapUUID,
                 cpp_iapTransactionId,
-                cpp_iapReceipt
+                cpp_iapReceipt,
+                cpp_cancellationToken
             );
     }
     void getInAppPurchaseCurrencyDataAsync(
+        godot::Object* cancellationToken,
         GCALLBACK onSuccess,
         GCALLBACK onFail) {
+            RGN::CancellationToken cpp_cancellationToken;
+            G_CancellationToken::ConvertToCoreModel(cancellationToken, cpp_cancellationToken);
             RGN::Modules::Currency::CurrencyModule::GetInAppPurchaseCurrencyDataAsync(
                 [onSuccess](RGN::Modules::Currency::CurrencyProductsData response) {
                     godot::Array gArgs;
@@ -136,15 +150,20 @@ public:
                      gArgs.push_back(code);
                      gArgs.push_back(godot::String(message.c_str()));
                      EXECUTE_GCALLBACK_DEFVAL(onFail, gArgs);
-                }            );
+                },
+                cpp_cancellationToken
+            );
     }
     void purchaseCurrencyProductAsync(
         godot::String productId,
+        godot::Object* cancellationToken,
         GCALLBACK onSuccess,
         GCALLBACK onFail) {
             string cpp_productId;
+            RGN::CancellationToken cpp_cancellationToken;
             godot::String g_productId = productId;
             cpp_productId = std::string(g_productId.utf8().get_data());
+            G_CancellationToken::ConvertToCoreModel(cancellationToken, cpp_cancellationToken);
             RGN::Modules::Currency::CurrencyModule::PurchaseCurrencyProductAsync(
                 [onSuccess](vector<RGN::Modules::Currency::Currency> response) {
                     godot::Array gArgs;
@@ -167,14 +186,17 @@ public:
                      gArgs.push_back(godot::String(message.c_str()));
                      EXECUTE_GCALLBACK_DEFVAL(onFail, gArgs);
                 },
-                cpp_productId
+                cpp_productId,
+                cpp_cancellationToken
             );
     }
     void addUserCurrenciesAsync(
         godot::Array currencies,
+        godot::Object* cancellationToken,
         GCALLBACK onSuccess,
         GCALLBACK onFail) {
             vector<RGN::Modules::Currency::Currency> cpp_currencies;
+            RGN::CancellationToken cpp_cancellationToken;
             godot::Array g_cpp_currencies = currencies;
             for (int i = 0; i < g_cpp_currencies.size(); ++i) {
                 godot::Dictionary g_cpp_currencies_item = g_cpp_currencies[i];
@@ -182,6 +204,7 @@ public:
                 G_Currency::ConvertToCoreModel(g_cpp_currencies_item, cpp_currencies_item);
                 cpp_currencies.push_back(cpp_currencies_item);
             }
+            G_CancellationToken::ConvertToCoreModel(cancellationToken, cpp_cancellationToken);
             RGN::Modules::Currency::CurrencyModule::AddUserCurrenciesAsync(
                 [onSuccess](vector<RGN::Modules::Currency::Currency> response) {
                     godot::Array gArgs;
@@ -204,12 +227,16 @@ public:
                      gArgs.push_back(godot::String(message.c_str()));
                      EXECUTE_GCALLBACK_DEFVAL(onFail, gArgs);
                 },
-                cpp_currencies
+                cpp_currencies,
+                cpp_cancellationToken
             );
     }
     void getUserCurrenciesAsync(
+        godot::Object* cancellationToken,
         GCALLBACK onSuccess,
         GCALLBACK onFail) {
+            RGN::CancellationToken cpp_cancellationToken;
+            G_CancellationToken::ConvertToCoreModel(cancellationToken, cpp_cancellationToken);
             RGN::Modules::Currency::CurrencyModule::GetUserCurrenciesAsync(
                 [onSuccess](vector<RGN::Modules::Currency::Currency> response) {
                     godot::Array gArgs;
@@ -231,6 +258,8 @@ public:
                      gArgs.push_back(code);
                      gArgs.push_back(godot::String(message.c_str()));
                      EXECUTE_GCALLBACK_DEFVAL(onFail, gArgs);
-                }            );
+                },
+                cpp_cancellationToken
+            );
     }
 };

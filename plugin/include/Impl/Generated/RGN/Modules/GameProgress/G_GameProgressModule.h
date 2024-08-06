@@ -1,5 +1,7 @@
 #pragma once
 // This file is generated: please don't modify. Go to Unity code generator if you need changes.
+#include "../../../../Utility/G_CancellationToken.h"
+#include "../../../../../Utility/CancellationToken.h"
 #include "../../../../../Generated/RGN/Modules/GameProgress/GameProgressModule.h"
 #include "../../../../../Generated/RGN/Modules/Currency/Currency.h"
 #include "../Currency/G_Currency.h"
@@ -49,17 +51,19 @@ public:
     }
 #endif
     REG_GCLASS_METHODS_HEADER() {
-        BIND_GCLASS_METHOD_DEFVAL(G_GameProgressModule::onGameCompleteAsync, GCLASS_METHOD_SIGNATURE("onGameCompleteAsync", "reward", "onSuccess", "onFail"), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
-        BIND_GCLASS_METHOD_DEFVAL(G_GameProgressModule::getGameProgressAsync, GCLASS_METHOD_SIGNATURE("getGameProgressAsync", "onSuccess", "onFail"), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
-        BIND_GCLASS_METHOD_DEFVAL(G_GameProgressModule::addUserProgressAsync, GCLASS_METHOD_SIGNATURE("addUserProgressAsync", "userProgressJson", "onSuccess", "onFail"), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
-        BIND_GCLASS_METHOD_DEFVAL(G_GameProgressModule::updateUserProgressAsync, GCLASS_METHOD_SIGNATURE("updateUserProgressAsync", "userProgressJson", "reward", "onSuccess", "onFail"), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
-        BIND_GCLASS_METHOD_DEFVAL(G_GameProgressModule::getUserProgressAsync, GCLASS_METHOD_SIGNATURE("getUserProgressAsync", "onSuccess", "onFail"), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
+        BIND_GCLASS_METHOD_DEFVAL(G_GameProgressModule::onGameCompleteAsync, GCLASS_METHOD_SIGNATURE("onGameCompleteAsync", "reward", "cancellationToken", "onSuccess", "onFail"), DEFVAL(nullptr), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
+        BIND_GCLASS_METHOD_DEFVAL(G_GameProgressModule::getGameProgressAsync, GCLASS_METHOD_SIGNATURE("getGameProgressAsync", "cancellationToken", "onSuccess", "onFail"), DEFVAL(nullptr), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
+        BIND_GCLASS_METHOD_DEFVAL(G_GameProgressModule::addUserProgressAsync, GCLASS_METHOD_SIGNATURE("addUserProgressAsync", "userProgressJson", "cancellationToken", "onSuccess", "onFail"), DEFVAL(nullptr), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
+        BIND_GCLASS_METHOD_DEFVAL(G_GameProgressModule::updateUserProgressAsync, GCLASS_METHOD_SIGNATURE("updateUserProgressAsync", "userProgressJson", "reward", "cancellationToken", "onSuccess", "onFail"), DEFVAL(nullptr), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
+        BIND_GCLASS_METHOD_DEFVAL(G_GameProgressModule::getUserProgressAsync, GCLASS_METHOD_SIGNATURE("getUserProgressAsync", "cancellationToken", "onSuccess", "onFail"), DEFVAL(nullptr), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
     }
     void onGameCompleteAsync(
         godot::Array reward,
+        godot::Object* cancellationToken,
         GCALLBACK onSuccess,
         GCALLBACK onFail) {
             vector<RGN::Modules::Currency::Currency> cpp_reward;
+            RGN::CancellationToken cpp_cancellationToken;
             godot::Array g_cpp_reward = reward;
             for (int i = 0; i < g_cpp_reward.size(); ++i) {
                 godot::Dictionary g_cpp_reward_item = g_cpp_reward[i];
@@ -67,6 +71,7 @@ public:
                 G_Currency::ConvertToCoreModel(g_cpp_reward_item, cpp_reward_item);
                 cpp_reward.push_back(cpp_reward_item);
             }
+            G_CancellationToken::ConvertToCoreModel(cancellationToken, cpp_cancellationToken);
             RGN::Modules::GameProgress::GameProgressModule::OnGameCompleteAsync(
                 [onSuccess](RGN::Modules::GameProgress::OnGameCompleteResult response) {
                     godot::Array gArgs;
@@ -83,12 +88,16 @@ public:
                      gArgs.push_back(godot::String(message.c_str()));
                      EXECUTE_GCALLBACK_DEFVAL(onFail, gArgs);
                 },
-                cpp_reward
+                cpp_reward,
+                cpp_cancellationToken
             );
     }
     void getGameProgressAsync(
+        godot::Object* cancellationToken,
         GCALLBACK onSuccess,
         GCALLBACK onFail) {
+            RGN::CancellationToken cpp_cancellationToken;
+            G_CancellationToken::ConvertToCoreModel(cancellationToken, cpp_cancellationToken);
             RGN::Modules::GameProgress::GameProgressModule::GetGameProgressAsync(
                 [onSuccess](RGN::Modules::GameProgress::GameProgress response) {
                     godot::Array gArgs;
@@ -104,15 +113,20 @@ public:
                      gArgs.push_back(code);
                      gArgs.push_back(godot::String(message.c_str()));
                      EXECUTE_GCALLBACK_DEFVAL(onFail, gArgs);
-                }            );
+                },
+                cpp_cancellationToken
+            );
     }
     void addUserProgressAsync(
         godot::String userProgressJson,
+        godot::Object* cancellationToken,
         GCALLBACK onSuccess,
         GCALLBACK onFail) {
             string cpp_userProgressJson;
+            RGN::CancellationToken cpp_cancellationToken;
             godot::String g_userProgressJson = userProgressJson;
             cpp_userProgressJson = std::string(g_userProgressJson.utf8().get_data());
+            G_CancellationToken::ConvertToCoreModel(cancellationToken, cpp_cancellationToken);
             RGN::Modules::GameProgress::GameProgressModule::AddUserProgressAsync(
                 [onSuccess](string response) {
                     godot::Array gArgs;
@@ -127,16 +141,19 @@ public:
                      gArgs.push_back(godot::String(message.c_str()));
                      EXECUTE_GCALLBACK_DEFVAL(onFail, gArgs);
                 },
-                cpp_userProgressJson
+                cpp_userProgressJson,
+                cpp_cancellationToken
             );
     }
     void updateUserProgressAsync(
         godot::String userProgressJson,
         godot::Array reward,
+        godot::Object* cancellationToken,
         GCALLBACK onSuccess,
         GCALLBACK onFail) {
             string cpp_userProgressJson;
             vector<RGN::Modules::Currency::Currency> cpp_reward;
+            RGN::CancellationToken cpp_cancellationToken;
             godot::String g_userProgressJson = userProgressJson;
             cpp_userProgressJson = std::string(g_userProgressJson.utf8().get_data());
             godot::Array g_cpp_reward = reward;
@@ -146,6 +163,7 @@ public:
                 G_Currency::ConvertToCoreModel(g_cpp_reward_item, cpp_reward_item);
                 cpp_reward.push_back(cpp_reward_item);
             }
+            G_CancellationToken::ConvertToCoreModel(cancellationToken, cpp_cancellationToken);
             RGN::Modules::GameProgress::GameProgressModule::UpdateUserProgressAsync(
                 [onSuccess](string response) {
                     godot::Array gArgs;
@@ -161,12 +179,16 @@ public:
                      EXECUTE_GCALLBACK_DEFVAL(onFail, gArgs);
                 },
                 cpp_userProgressJson,
-                cpp_reward
+                cpp_reward,
+                cpp_cancellationToken
             );
     }
     void getUserProgressAsync(
+        godot::Object* cancellationToken,
         GCALLBACK onSuccess,
         GCALLBACK onFail) {
+            RGN::CancellationToken cpp_cancellationToken;
+            G_CancellationToken::ConvertToCoreModel(cancellationToken, cpp_cancellationToken);
             RGN::Modules::GameProgress::GameProgressModule::GetUserProgressAsync(
                 [onSuccess](string response) {
                     godot::Array gArgs;
@@ -180,6 +202,8 @@ public:
                      gArgs.push_back(code);
                      gArgs.push_back(godot::String(message.c_str()));
                      EXECUTE_GCALLBACK_DEFVAL(onFail, gArgs);
-                }            );
+                },
+                cpp_cancellationToken
+            );
     }
 };

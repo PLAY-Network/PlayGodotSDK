@@ -1,5 +1,7 @@
 #pragma once
 // This file is generated: please don't modify. Go to Unity code generator if you need changes.
+#include "../../../../Utility/G_CancellationToken.h"
+#include "../../../../../Utility/CancellationToken.h"
 #include "../../../../../Generated/RGN/Modules/GamePass/GamePassModule_Admin.h"
 #include "../../../../../Generated/RGN/Modules/GamePass/GamePassData.h"
 #include "G_GamePassData.h"
@@ -37,17 +39,20 @@ public:
     }
 #endif
     REG_GCLASS_METHODS_HEADER() {
-        BIND_GCLASS_METHOD_DEFVAL(G_GamePassModule_Admin::addAsync, GCLASS_METHOD_SIGNATURE("addAsync", "gamepassData", "onSuccess", "onFail"), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
-        BIND_GCLASS_METHOD_DEFVAL(G_GamePassModule_Admin::deleteAsync, GCLASS_METHOD_SIGNATURE("deleteAsync", "id", "requestName", "onSuccess", "onFail"), DEFVAL(""), DEFVAL(""), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
-        BIND_GCLASS_METHOD_DEFVAL(G_GamePassModule_Admin::addToUserAsync, GCLASS_METHOD_SIGNATURE("addToUserAsync", "id", "requestName", "userId", "onSuccess", "onFail"), DEFVAL(""), DEFVAL(""), DEFVAL(""), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
-        BIND_GCLASS_METHOD_DEFVAL(G_GamePassModule_Admin::deleteFromUserAsync, GCLASS_METHOD_SIGNATURE("deleteFromUserAsync", "id", "requestName", "userId", "onSuccess", "onFail"), DEFVAL(""), DEFVAL(""), DEFVAL(""), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
+        BIND_GCLASS_METHOD_DEFVAL(G_GamePassModule_Admin::addAsync, GCLASS_METHOD_SIGNATURE("addAsync", "gamepassData", "cancellationToken", "onSuccess", "onFail"), DEFVAL(nullptr), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
+        BIND_GCLASS_METHOD_DEFVAL(G_GamePassModule_Admin::deleteAsync, GCLASS_METHOD_SIGNATURE("deleteAsync", "id", "requestName", "cancellationToken", "onSuccess", "onFail"), DEFVAL(""), DEFVAL(""), DEFVAL(nullptr), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
+        BIND_GCLASS_METHOD_DEFVAL(G_GamePassModule_Admin::addToUserAsync, GCLASS_METHOD_SIGNATURE("addToUserAsync", "id", "requestName", "userId", "cancellationToken", "onSuccess", "onFail"), DEFVAL(""), DEFVAL(""), DEFVAL(""), DEFVAL(nullptr), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
+        BIND_GCLASS_METHOD_DEFVAL(G_GamePassModule_Admin::deleteFromUserAsync, GCLASS_METHOD_SIGNATURE("deleteFromUserAsync", "id", "requestName", "userId", "cancellationToken", "onSuccess", "onFail"), DEFVAL(""), DEFVAL(""), DEFVAL(""), DEFVAL(nullptr), GCALLBACK_DEFVAL, GCALLBACK_DEFVAL);
     }
     void addAsync(
         godot::Dictionary gamepassData,
+        godot::Object* cancellationToken,
         GCALLBACK onSuccess,
         GCALLBACK onFail) {
             RGN::Modules::GamePass::GamePassData cpp_gamepassData;
+            RGN::CancellationToken cpp_cancellationToken;
             G_GamePassData::ConvertToCoreModel(gamepassData, cpp_gamepassData);
+            G_CancellationToken::ConvertToCoreModel(cancellationToken, cpp_cancellationToken);
             RGN::Modules::GamePass::GamePassModule_Admin::AddAsync(
                 [onSuccess](RGN::Modules::GamePass::GamePassData response) {
                     godot::Array gArgs;
@@ -64,20 +69,24 @@ public:
                      gArgs.push_back(godot::String(message.c_str()));
                      EXECUTE_GCALLBACK_DEFVAL(onFail, gArgs);
                 },
-                cpp_gamepassData
+                cpp_gamepassData,
+                cpp_cancellationToken
             );
     }
     void deleteAsync(
         godot::String id,
         godot::String requestName,
+        godot::Object* cancellationToken,
         GCALLBACK onSuccess,
         GCALLBACK onFail) {
             string cpp_id;
             string cpp_requestName;
+            RGN::CancellationToken cpp_cancellationToken;
             godot::String g_id = id;
             cpp_id = std::string(g_id.utf8().get_data());
             godot::String g_requestName = requestName;
             cpp_requestName = std::string(g_requestName.utf8().get_data());
+            G_CancellationToken::ConvertToCoreModel(cancellationToken, cpp_cancellationToken);
             RGN::Modules::GamePass::GamePassModule_Admin::DeleteAsync(
                 [onSuccess](RGN::Modules::GamePass::GamePassData response) {
                     godot::Array gArgs;
@@ -95,24 +104,28 @@ public:
                      EXECUTE_GCALLBACK_DEFVAL(onFail, gArgs);
                 },
                 cpp_id,
-                cpp_requestName
+                cpp_requestName,
+                cpp_cancellationToken
             );
     }
     void addToUserAsync(
         godot::String id,
         godot::String requestName,
         godot::String userId,
+        godot::Object* cancellationToken,
         GCALLBACK onSuccess,
         GCALLBACK onFail) {
             string cpp_id;
             string cpp_requestName;
             string cpp_userId;
+            RGN::CancellationToken cpp_cancellationToken;
             godot::String g_id = id;
             cpp_id = std::string(g_id.utf8().get_data());
             godot::String g_requestName = requestName;
             cpp_requestName = std::string(g_requestName.utf8().get_data());
             godot::String g_userId = userId;
             cpp_userId = std::string(g_userId.utf8().get_data());
+            G_CancellationToken::ConvertToCoreModel(cancellationToken, cpp_cancellationToken);
             RGN::Modules::GamePass::GamePassModule_Admin::AddToUserAsync(
                 [onSuccess](RGN::Modules::GamePass::GamePassUserData response) {
                     godot::Array gArgs;
@@ -131,24 +144,28 @@ public:
                 },
                 cpp_id,
                 cpp_requestName,
-                cpp_userId
+                cpp_userId,
+                cpp_cancellationToken
             );
     }
     void deleteFromUserAsync(
         godot::String id,
         godot::String requestName,
         godot::String userId,
+        godot::Object* cancellationToken,
         GCALLBACK onSuccess,
         GCALLBACK onFail) {
             string cpp_id;
             string cpp_requestName;
             string cpp_userId;
+            RGN::CancellationToken cpp_cancellationToken;
             godot::String g_id = id;
             cpp_id = std::string(g_id.utf8().get_data());
             godot::String g_requestName = requestName;
             cpp_requestName = std::string(g_requestName.utf8().get_data());
             godot::String g_userId = userId;
             cpp_userId = std::string(g_userId.utf8().get_data());
+            G_CancellationToken::ConvertToCoreModel(cancellationToken, cpp_cancellationToken);
             RGN::Modules::GamePass::GamePassModule_Admin::DeleteFromUserAsync(
                 [onSuccess](vector<RGN::Modules::GamePass::GamePassUserData> response) {
                     godot::Array gArgs;
@@ -173,7 +190,8 @@ public:
                 },
                 cpp_id,
                 cpp_requestName,
-                cpp_userId
+                cpp_userId,
+                cpp_cancellationToken
             );
     }
 };
