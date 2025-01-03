@@ -1,6 +1,6 @@
-# Godot Plugin for READYgg
+# Godot Plugin for Play SDK
 
-This repository contains the Godot Plugin for READYgg, which allows developers to integrate READYgg functionalities into their Godot Engine projects. The plugin supports Godot Engine versions 3 and 4 and facilitates development for both Android and iOS platforms.
+This repository contains the Godot Plugin for Play SDK, which allows developers to integrate Play SDK functionalities into their Godot Engine projects. The plugin supports Godot Engine versions 3 and 4 and facilitates development for both Android and iOS platforms.
 
 ## Usage
 
@@ -8,25 +8,25 @@ The included Godot project offers various demo scenes to help you get started. B
 
 ```gdscript
 func _ready():
-    var configure_data = G_RGNConfigurationData.new()
+    var configure_data = G_PlaySDKConfigurationData.new()
     configure_data.setAppId("YOUR_APP_ID")
     configure_data.setDevelopmentEnvironment()
-    RGNCore.initialize(self, configure_data, func():
-        UserProfileModule.getProfileAsync_UserId(RGNCore.getUserId(),
+    PlaySDKCore.initialize(self, configure_data, func():
+        UserProfileModule.getProfileAsync_UserId(PlaySDKCore.getUserId(),
             func (userData):
                 print("User display name is " : + userData.displayName)
         )
     )
 
 func _process(_delta):
-    RGNCore.update()
+    PlaySDKCore.update()
 ```
 
 To add this plugin to your project, follow these steps:
 1. Download a release compatible with your version of Godot.
-2. Copy the `addons/rgn` folder to your project.
-3. For Android support, copy `android/plugins/rgn.aar` and `android/plugins/rgn.gdap` to your project, and enable the plugin in export settings. Also, don't forget to enable Internet permission in the Android Export settings.
-4. For iOS support, copy the `ios/plugin/rgn` folder to your project, and enable the plugin in export settings.
+2. Copy the `addons/play_sdk` folder to your project.
+3. For Android support, copy `android/plugins/play_sdk.aar` and `android/plugins/play_sdk.gdap` to your project, and enable the plugin in export settings. Also, don't forget to enable Internet permission in the Android Export settings.
+4. For iOS support, copy the `ios/plugin/play_sdk` folder to your project, and enable the plugin in export settings.
 
 ## Building the Plugin
 
@@ -58,7 +58,7 @@ scons version=4 platform=ios target=template_debug/template_release
    ```gradle
    compileOnly fileTree(dir: "libs", includes: ["YOUR_GODOTLIB_AAR_FILE_NAME.aar"])
    ```
-4. Sync the Gradle file, build the project, and replace the built AAR in `YOUR_PROJECT/android/plugins/rgn.aar`.
+4. Sync the Gradle file, build the project, and replace the built AAR in `YOUR_PROJECT/android/plugins/play_sdk.aar`.
 
 ## Building the iOS Plugin
 
@@ -69,4 +69,5 @@ In the `plugin-ios` folder, execute the following command:
 
 ## Support and Issues
 - For any issues encountered, refer to the `Issues` section of this repository.
-- You can also contact RGN developers directly.
+- You can also contact Play SDK developers directly.
+
